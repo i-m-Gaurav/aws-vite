@@ -23,5 +23,5 @@ cache:
 
 post_build:
   commands:
-    - aws s3 sync dist/ s3://react-reactapp --delete
+    - aws s3 sync dist/ s3://new-vite-app-1-1-1 --delete
     - aws cloudfront create-invalidation --distribution-id E1QL7X8RMQNEMH --paths "/*"
