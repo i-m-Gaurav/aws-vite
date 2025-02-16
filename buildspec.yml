@@ -1,0 +1,27 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 22
+    commands:
+      - npm install -g npm@latest
+      - npm install
+
+  build:
+    commands:
+      - npm run build
+
+artifacts:
+  files:
+    - '**/*'
+  base-directory: dist
+
+cache:
+  paths:
+    - node_modules/**/*
+
+post_build:
+  commands:
+    - aws s3 sync dist/ s3://react-reactapp --delete
+    - aws cloudfront create-invalidation --distribution-id E1QL7X8RMQNEMH --paths "/*"
