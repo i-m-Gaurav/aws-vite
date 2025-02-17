@@ -5,7 +5,7 @@ function App() {
 
   return (
     <>
-      <h1>Hello AWS.</h1>
+      <h1>Hello yash</h1>
     </>
   )
 }
